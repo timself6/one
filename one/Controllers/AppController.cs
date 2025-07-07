@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace one.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AppController(ILogger<AppController> logger) : ControllerBase
     {
         [HttpGet("ping")]
