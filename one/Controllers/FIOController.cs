@@ -7,34 +7,35 @@ namespace one.Controllers
     public class FIOController : ControllerBase
     {
         // GET: api/<FIOController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{project}.fio")]
+        public IEnumerable<string> Get(string project)
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { project };
         }
 
         // GET api/<FIOController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{project}/{id}")]
+        public string Get(string project, string id)
         {
             return "value";
         }
 
         // POST api/<FIOController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{project}")]
+        public void Post(string project, [FromBody] string value)
         {
         }
 
         // PUT api/<FIOController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{project}/{id}")]
+        public void Put(string project, string id, [FromBody] string value)
         {
+            HttpContext.Response.Headers.Add("hello", $"{value.Length}");
         }
 
         // DELETE api/<FIOController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{project}/{id}")]
+        public void Delete(string project, string id)
         {
         }
     }
